@@ -36,8 +36,12 @@ $sidebar-width: 300px;
     // grid-column-end: -1;
     // background: gainsboro;
 
-    grid-row: 2/1;
-    grid-column: 2/-1;
+    grid-row: 2/3;
+    grid-column: 2/3;
+
+    overflow-y: scroll;
+    padding: 20px 30px;
+    padding-top: 0;
   
   }
 }
@@ -78,7 +82,6 @@ $sidebar-width: 300px;
   &__text {
     flex: 1;
     color: $white;
-    font-size: 2.4rem;
   }
 
   &__search {

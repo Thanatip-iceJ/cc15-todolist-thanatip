@@ -1,0 +1,54 @@
+@import './index.scss';
+@import './App.scss';
+
+.header {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    background: $primary;
+    color: black;
+    padding: 5px 20px;
+    height: $header-height;
+  
+    &__logo {
+      display: flex;
+      cursor: pointer;
+      font-size: 3rem;
+      color: $white;
+    }
+  
+    &__text {
+      flex: 1;
+      color: $white;
+      font-size: 1.5rem;
+    }
+  
+    &__search {
+      min-width: 300px;
+    }
+  }
+
+  .search {
+    position: relative;
+
+    &__icon {
+        position: absolute;
+        left: 5px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 1.6rem;
+        font-weight: 200;
+        color: grey;
+        display: flex;
+    }
+
+    &__input {
+        width: 100%;
+        padding: 5px;
+        padding-left: 30px;
+        padding-block: 8px;
+        border-radius: 5px;
+        border: 1px solid $grey-light;
+        outline: none;
+    }
+  }
