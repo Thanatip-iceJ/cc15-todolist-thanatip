@@ -98,27 +98,30 @@ $sidebar-width: 375px;
   height: calc(100vh - $header-height);
 }
 
-.list {
-  display: flex;
-  flex-direction: column;
+.accordion {
 
   &__item {
     display: flex;
     align-items: center;
     gap: 15px;
-    font-size: 2rem;
+    font-size: 1.8rem;
     padding: 10px;
     border-radius: 4px;
     cursor: pointer;
-    color: black;
+    font-weight: 900;
 
-    &:hover {
-      background: $grey-light;
+    &__icon {
+      cursor: pointer;
     }
-  
+
+    &__active {
+      transform: rotate(-90deg);
+    }
+
     &__text {
-      font-weight: 400;
+      font-weight: inherit;
     }
   }
+  
 
 }
