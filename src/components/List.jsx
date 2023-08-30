@@ -3,7 +3,7 @@ import ListItem from './ListItem'
 
 function List(props) {
   return (
-    <ul>
+    <ul className='list'>
         {props.data.map(x => 
             <ListItem 
             key={x.id}
