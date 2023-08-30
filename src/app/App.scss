@@ -1,7 +1,7 @@
 @import '../index.scss';
 
 $header-height: 60px;
-$sidebar-width: 300px;
+$sidebar-width: 375px;
 
 .todo {
   display: grid;
@@ -87,4 +87,38 @@ $sidebar-width: 300px;
   &__search {
     min-width: 300px;
   }
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px 30px;
+  // background: wheat;
+  height: calc(100vh - $header-height);
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+
+  &__item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-size: 2rem;
+    padding: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    color: black;
+
+    &:hover {
+      background: $grey-light;
+    }
+  
+    &__text {
+      font-weight: 400;
+    }
+  }
+
 }
