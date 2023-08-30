@@ -2,8 +2,21 @@ import './App.scss';
 import { FaInbox, FaCalendar, FaCalendarAlt, FaChevronDown } from 'react-icons/fa';
 import Header from '../components/Header'
 import ListItem from '../components/ListItem';
+import List from '../components/List';
 
 function App() {
+
+  const generalLists = [
+    {id:1, text:'Inbox', icon: <FaInbox />, active: true},
+    {id:2, text:'Today', icon: <FaCalendar />, active: false},
+    {id:3, text:'Next 7 days', icon: <FaCalendarAlt />, active: false}
+  ]
+
+  const projectLists = [
+    {id:1, text: 'Project-A', icon: <FaInbox />, active: true},
+    {id:2, text: 'Project-B', icon: <FaInbox />, active: false}
+  ]
+  
   return (
     <div className='todo'>
       <div className="todo__header">
@@ -12,41 +25,7 @@ function App() {
       <div className="todo__sidebar">
         <aside className='sidebar'>
           <section className='sidebar__category'>
-            <ul className='list'>
-              {/* <li className='list__item'>
-                <span className="list__item__icon">
-                  <FaInbox/>
-                </span>
-                <p className="list__item__text">Inbox</p>
-              </li>
-              <li className='list__item'>
-                <span className="list__item__icon">
-                  <FaCalendar/>
-                </span>
-                <p className="list__item__text">Today</p>
-              </li>
-              <li className='list__item'>
-                <span className="list__item__icon">
-                  <FaCalendarAlt/>
-                </span>
-                <p className="list__item__text">Next 7 days</p>
-              </li> */}
-              <ListItem 
-                text='Inbox'
-                icon={<FaInbox/>}
-                active={true}
-              />
-              <ListItem 
-                text='Today'
-                icon={<FaCalendar/>}
-                active={false}
-              />
-              <ListItem 
-                text='Next 7 days'
-                icon={<FaCalendarAlt/>}
-                active={false}
-              />
-            </ul>
+            <List data={generalLists}/>
           </section>
           <section className='sidebar__category'>
           <div className="accordion">
@@ -57,10 +36,7 @@ function App() {
                 </li>
               </div>
             </div>
-            <ul className='list'>
-              <ListItem text='Project-A' icon={<FaInbox/>} active={true}/>
-              <ListItem text='Project-B' icon={<FaInbox/>} active={false}/>
-            </ul>
+            <List data={projectLists}/>
           </section>
         </aside>
       </div>
@@ -70,3 +46,11 @@ function App() {
 }
 
 export default App;
+
+/* Challenge : Refactor
+-ให้ 2 section render UI ที่...
+  -Option A (2/5): ต่างกัน <Lists/> กับ <Accordion/> : Difficulty
+  -Option B (4/5): render UI เดียวกัน เช่น <Lists />
+  -OptionC (5/5): render <Lists/> ภายใต้ <Accordion> <Lists/> </Accordion>
+
+*/
