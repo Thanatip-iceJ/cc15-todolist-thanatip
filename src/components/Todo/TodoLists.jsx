@@ -1,37 +1,42 @@
 import styles from './TodoLists.module.scss';
-import TodoForm from './TodoForm';
-import { FaTrashAlt, FaPen } from 'react-icons/fa';
-import { HiOutlineCheck } from 'react-icons/hi';
-import { useState } from 'react'
+import TodoItem from './TodoItem';
+import { useState } from 'react';
+
+const data = [
+  { "id": 1, "task": "Suspendisse potenti.", "status": false, "due_date": "2023-04-26" },
+    {
+        "id": 2,
+        "task": "In hac habitasse platea dictumst. Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem.",
+        "status": false,
+        "due_date": "2023-05-08"
+    },
+    {
+        "id": 3,
+        "task": "Aenean fermentum. Donec ut mauris eget massa tempor convallis.",
+        "status": false,
+        "due_date": "2023-04-30"
+    }
+]
 
 function TodoLists() {
 
-  const [isEditing, setIsEditing] = useState(true);
-  const editClickHandle = () => setIsOpenForm(!isOpenForm);
-  const [isOpenForm, setIsOpenForm] = useState(false)
-  
+  const [allTodos, setAllTodos] = useState(data)
+  // # Render list 1
+  // const dataRender = data.map(x => (
+  //   <TodoItem key={x.id} task={x.task} done={x.status} date={x.due_date} />
+  // ))
 
+  // # Render list 2
   return (
-    <>
-    { !isOpenForm? (<ul className={styles.todo__lists}>
-      <li className={styles.todo}>
-        <div className={styles.todo__checkbox}>
-          <HiOutlineCheck className={styles.todo__checkbox__icon} />
-        </div>
-        <p className={styles.todo__task}>todo-item 1 </p>
-        <span className={styles.todo__date}>30 Aug</span>
-        <div className={styles.todo__action}>
-          <span>
-            <FaPen className={styles.todo__edit} onClick={editClickHandle} />
-          </span>
-          <span>
-            <FaTrashAlt className={styles.todo__delete} />
-          </span>
-        </div>
-      </li>
-    </ul>) : <TodoForm textSubmit='Edit Task' setIsOpenForm={setIsOpenForm}/>}
-    </>
-  );
+    <ul className={styles.todo__lists}>{allTodos.map(x => (
+      <TodoItem 
+      key={x.id} 
+      task={x.task} 
+      done={x.status} 
+      date={x.due_date} />
+    ))}
+    </ul>
+  )
 }
 
 export default TodoLists;
