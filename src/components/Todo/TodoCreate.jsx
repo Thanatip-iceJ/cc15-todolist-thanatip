@@ -7,7 +7,7 @@ import { useState } from 'react'
 
 // Concept: true? Add task : <TodoForm />
 
-function TodoCreate() {
+function TodoCreate(props) {
 
   const [isOpenForm, setIsOpenForm] = useState(false)
   // let active = true
@@ -19,7 +19,13 @@ function TodoCreate() {
   return (
     <>
   { isOpenForm? (
-    <TodoForm textSubmit='Add Task' setIsOpenForm={setIsOpenForm}/>
+    <TodoForm 
+    textSubmit='Add Task' 
+    setIsOpenForm={setIsOpenForm} 
+    setTodo={props.setTodo} 
+    data={props.data}
+    addTodo={props.addTodo}
+    />
     ) : (
     <div className={styles.todo__create} onClick={handleClick}>
       <div className={styles.todo__create__button}>

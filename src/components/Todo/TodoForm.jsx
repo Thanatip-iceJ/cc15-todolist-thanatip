@@ -1,6 +1,7 @@
 import styles from './TodoForm.module.scss';
 import {Button} from '../Common/Button/Button'
 import {useState} from 'react'
+import {nanoid} from 'nanoid'
 
 
 /*
@@ -17,7 +18,7 @@ function TodoForm(props) {
 
   const [input, setInput] = useState('')
   const [isError, setIsError] = useState(false)
-  const [taskInput , setTaskInput] = useState('')
+  const [taskInput , setTaskInput] = useState(props.oldTodo?.task || '')
 
   const handleChangeInput = (event) => {
     // console.log('user is typing...', event.target.value);
@@ -30,14 +31,18 @@ function TodoForm(props) {
     event.preventDefault()
     
     if(taskInput.trim() === '') {
-      console.log('Error');
       setIsError(true)
-    } else {
-      console.log('Success')
+      return;
+    } 
 
+      if(props.addTodo) props.addTodo(taskInput)
+      else if(props.editTodo && props.oldTodo) {
+        props.editTodo(props.oldTodo.id, { task: taskInput })
+      }
+
+      props.setIsOpenForm(false)
     }
-  }
-
+  
   const handleCancel = () => {
     props.setIsOpenForm(false)
   }
@@ -53,7 +58,7 @@ function TodoForm(props) {
         {isError? <p className={styles.todo__error}>Title is required</p> : null}
         <div className={styles.todo__form__buttons}>
           <Button text='Cancel' active={false} type='button'onClick={handleCancel}/>
-          <Button text={props.textSubmit} active={true} type='submit'/>
+          <Button text={props.textSubmit} active={true} onClick={props.editTodo} />
         </div>
       </div>
     </form>
